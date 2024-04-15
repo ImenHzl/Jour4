@@ -6,7 +6,7 @@ response = requests.get(url)
 content= response.content
 soup = BeautifulSoup(content, 'html.parser')
 section=soup.findAll("div",class_="c-grid__item c-grid__item")
-#print (f" liste de section : {section}")
+print (f" liste de section : {section}")
 
 for elt in section:
     prix= section[3] 
