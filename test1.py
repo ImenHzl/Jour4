@@ -1,14 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 
-url="https://www.marc-orian.com/fr_FR/c/bijoux/par-type/bracelets/bracelets-chaines/facette/femme/"
+url="https://fr.wikipedia.org/wiki/Test_(informatique)"
 response = requests.get(url)
 content= response.content
 soup = BeautifulSoup(content, 'html.parser')
-section=soup.findAll("div",class_="c-grid__item c-grid__item")
-print (f" liste de section : {section}")
-
-for elt in section:
-    prix= section[3] 
-print(prix)
-
+titre= soup.find("h1").text.split()
+print(f"affiche titre: {titre}")
+section=soup.find("div",class_="mw-body-content")
+#print (f" liste de section : {section}")
+for fils in  section.find_all("h2"):
+    for div in fils:
+            sousTitre=div.get("id")
+            print(sousTitre)
